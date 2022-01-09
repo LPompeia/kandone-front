@@ -6,16 +6,53 @@
 
           <h3 class="mb-4">Login Kandone</h3>
 
-          <div class="form-outline mb-4">
-            <input type="email" placeholder="Username" id="email" class="form-control form-control-lg" />
-          </div>
+          <!--Form authentication - user input email and password-->
+          <form class="form mt-4" (ngSubmit)="login()" #loginForm="ngForm">
+            <div class="form-group">
+              <div class="form-outline mb-4">
+                <input
+                  class="form-control"
+                  type="email"
+                  placeholder="Username"
+                  name="username"
+                  [(ngModel)]="username"
+                  #campoUsername="ngModel"
+                  required
+                />
+              <app-message-inputs-alert
+                *ngIf="campoUsername.invalid && campoUsername.touched"
+                mensagem="Please, enter your username"
+              ></app-message-inputs-alert>
+              </div>
+            </div>
 
-          <div class="form-outline mb-4">
-            <input type="password" placeholder="Password" id="password" class="form-control form-control-lg" />
-          </div>
+            <div class="form-group">
+              <div class="form-outline mb-4">
+                <input
+                  class="form-control"
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  [(ngModel)]="password"
+                  #campoPassword="ngModel"
+                  required
+                />
+                <app-message-inputs-alert
+                *ngIf="campoPassword.invalid && campoPassword.touched"
+                mensagem="Please, enter your password"
+              ></app-message-inputs-alert>
+              </div>
+            </div>
 
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+            <button
+              class="btn btn-primary btn-lg btn-block"
+              type="submit"
+              [disabled]="loginForm.invalid">
+              Login
+            </button>
+          </form>
 
+          <!--User click for create an account-->
           <hr class="my-3">
           <a [routerLink]="['signup']">Create an account</a>
         </div>
