@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -7,16 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  username = ''
+  email = ''
   password = ''
 
-  constructor() { }
+  constructor(
+    private authentication: AuthenticationService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
   login() {
-    console.log('Received on front', this.username, this.password)
+    this.authentication.authenticate(this.email, this.password)
+    .subscribe(() => {
+      this.router.navigate(['board']);
+    }, (error => {
+      alert('User or password is invalid. Try again !');
+      console.log(error);
+    }))
   }
 
 }

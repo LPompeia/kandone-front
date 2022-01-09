@@ -13,15 +13,15 @@
                 <input
                   class="form-control"
                   type="email"
-                  placeholder="Username"
-                  name="username"
-                  [(ngModel)]="username"
+                  placeholder="Email"
+                  name="email"
+                  [(ngModel)]="email"
                   #campoUsername="ngModel"
                   required
                 />
               <app-message-inputs-alert
                 *ngIf="campoUsername.invalid && campoUsername.touched"
-                mensagem="Please, enter your username"
+                mensagem="Please, enter your email"
               ></app-message-inputs-alert>
               </div>
             </div>

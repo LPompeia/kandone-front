@@ -4,14 +4,25 @@
      <img src="../../../assets/logo-kandone.png" alt="Logo of Kandone" width="100px">
     </a>
 
-    <div>
-      <i class="fa fa fa-bell mr-3 fa-2x white-color-icon"></i>
-
-      <i class="fa fa-user-circle mr-1 fa-2x white-color-icon">
-        <span class="navbar-text">
-          <a class="user-link" [routerLink]="['']">Olá, Usuário</a>
-        </span>
-      </i>
+    <div *ngIf="user$ | async as user">
+      <div *ngIf="user.iss; else login">
+        <i class="fa fa-user-circle mr-1 fa-2x white-color-icon">
+          <span class="navbar-text">
+            <a class="user-link" [routerLink]="['']">Olá, {{ user.iss }}</a>
+          </span>
+        </i>
+        <i class="fa fa-sign-out mr-3 fa-1x white-color-icon" (click)="logout()"></i>
+      </div>
     </div>
+
+    <ng-template #login>
+      <div>
+        <i class="fa fa-user-circle mr-1 fa-2x white-color-icon">
+          <span class="navbar-text">
+            <a class="user-link">Olá, Usuário</a>
+          </span>
+        </i>
+      </div>
+    </ng-template>
   </nav>
 </header>
