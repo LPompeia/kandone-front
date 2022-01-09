@@ -1,0 +1,10 @@
+.white-color-icon {
+  color:white;
+}
+
+.user-link {
+  padding: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+}
