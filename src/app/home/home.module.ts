@@ -6,10 +6,11 @@ import { HomeComponent } from './home.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, LoginComponent],
+  declarations: [HomeComponent, LoginComponent, SignupComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

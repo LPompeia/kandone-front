@@ -1,0 +1,85 @@
+<div class="container py-4 h-100">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="card shadow-2-strong" style="border-radius: 1rem;">
+        <div class="card-body p-4 text-center">
+          <h3 class="mb-4">Sign-up. Organize now!</h3>
+          <form [formGroup]="newUsuarioForm" (submit)="signup()">
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  placeholder="Email"
+                  formControlName="email"
+                />
+                <app-message-inputs-alert
+                *ngIf="
+                  newUsuarioForm.get('email')?.errors?.required &&
+                  newUsuarioForm.get('email')?.touched"
+                  mensagem="E-mail is required"
+                ></app-message-inputs-alert>
+                <app-message-inputs-alert
+                *ngIf="
+                  newUsuarioForm.get('email')?.errors?.email &&
+                  newUsuarioForm.get('email')?.touched"
+                  mensagem="E-mail in incorrect format"
+                ></app-message-inputs-alert>
+              </div>
+
+            <div class="form-group">
+              <input
+                class="form-control"
+                placeholder="Name"
+                formControlName="name"
+              />
+              <app-message-inputs-alert
+                *ngIf="
+                newUsuarioForm.get('name')?.errors &&
+                newUsuarioForm.get('name')?.touched"
+                mensagem="Name must be at least 4 in size"
+              ></app-message-inputs-alert>
+            </div>
+
+            <div class="form-group">
+              <input
+                class="form-control"
+                placeholder="Username"
+                name="username"
+                formControlName="username"
+              />
+              <app-message-inputs-alert
+                *ngIf="
+                  newUsuarioForm.get('username')?.errors?.lower &&
+                  newUsuarioForm.get('username')?.touched"
+                  mensagem="Username must be lower case"
+              ></app-message-inputs-alert>
+              <app-message-inputs-alert
+                *ngIf="newUsuarioForm.get('username')?.errors?.userExists"
+                mensagem="Username already created by other users"
+            ></app-message-inputs-alert>
+            </div>
+
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="password"
+                placeholder="Password"
+                formControlName="password"
+              />
+            </div>
+
+            <button
+              class="btn btn-primary btn-lg btn-block"
+              type="submit"
+              [disabled]="!newUsuarioForm.valid"
+            >
+              Signup
+            </button>
+          </form>
+
+          <hr class="my-3">
+          <p>Already an account? <a [routerLink]="['']">Login now!</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
