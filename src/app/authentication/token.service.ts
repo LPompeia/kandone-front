@@ -22,4 +22,8 @@ export class TokenService {
     return !!this.getToken();
   }
 
+  formatTokenForRequestInterceptor() {
+    return 'Bearer ' + this.getToken();
+  }
+
 }
