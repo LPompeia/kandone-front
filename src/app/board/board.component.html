@@ -1,1 +1,48 @@
-<p>board works!</p>
+<div *ngIf="boardView$ | async as view" >
+  <p class="mb-1 pl-3 board-name"> {{view.board.name}} </p>
+  <div class="d-flex flex-row" cdkDropListGroup>
+    <!--Column BACKLOG-->
+    <app-board-column-tasks
+        [name]="columnName.BACKLOG"
+        cdkDropList
+        [cdkDropListData]="view.cards_backlog"
+        (cdkDropListDropped)="drop($event)">
+      <div class="card mb-1 cursor-grab" *ngFor="let card of view.cards_backlog" cdkDrag>
+        <app-card-task [description]="card.description"></app-card-task>
+      </div>
+    </app-board-column-tasks>
+
+    <!--Column TO DO-->
+    <app-board-column-tasks
+        [name]="columnName.TO_DO"
+        cdkDropList
+        [cdkDropListData]="view.cards_todo"
+        (cdkDropListDropped)="drop($event)">
+      <div class="card mb-1 cursor-grab" *ngFor="let card of view.cards_todo" cdkDrag>
+        <app-card-task [description]="card.description"></app-card-task>
+      </div>
+    </app-board-column-tasks>
+
+    <!--Column IN PROGRESS-->
+    <app-board-column-tasks
+        [name]="columnName.IN_PROGRESS"
+        cdkDropList
+        [cdkDropListData]="view.cards_inprogress"
+        (cdkDropListDropped)="drop($event)">
+      <div class="card mb-1 cursor-grab" *ngFor="let card of view.cards_inprogress" cdkDrag>
+        <app-card-task [description]="card.description"></app-card-task>
+      </div>
+    </app-board-column-tasks>
+
+    <!--Column done-->
+    <app-board-column-tasks
+        [name]="columnName.DONE"
+        cdkDropList
+        [cdkDropListData]="view.cards_done"
+        (cdkDropListDropped)="drop($event)">
+      <div class="card mb-1 cursor-grab" *ngFor="let card of view.cards_done" cdkDrag>
+        <app-card-task [description]="card.description"></app-card-task>
+      </div>
+    </app-board-column-tasks>
+  </div>
+</div>
