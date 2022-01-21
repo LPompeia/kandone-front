@@ -5,6 +5,8 @@ import { Board } from './board.interface';
 import { Observable } from 'rxjs';
 import { UserService } from '../authentication/user/user.service';
 import { switchMap } from 'rxjs/operators';
+import { CardTaskService } from './card-task/card-task.service';
+import { CardStatusDragDraw } from './card-task/card.model';
 
 @Component({
   selector: 'app-board',
@@ -17,6 +19,7 @@ export class BoardComponent implements OnInit {
   public columnName = ColumnNameBoard;
 
   constructor(
+    private cardService: CardTaskService,
     private boardService: BoardService,
     private userService: UserService) { }
 
@@ -30,12 +33,19 @@ export class BoardComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
+      let cardIdUpdate = event.previousContainer.data[event.previousIndex].id
+      let cardUpdate = new CardStatusDragDraw(event.container.id);
+
+      this.cardService.dragAndDrawStatus(cardIdUpdate, cardUpdate).subscribe(() => {
+        transferArrayItem(
+          event.previousContainer.data,
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex,
+        );
+      }, (error) => {
+        console.error(error)
+      })
     }
   }
 
