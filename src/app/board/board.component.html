@@ -3,6 +3,7 @@
   <div class="d-flex flex-row" cdkDropListGroup>
     <!--Column BACKLOG-->
     <app-board-column-tasks
+        id="d-0"
         [name]="columnName.BACKLOG"
         cdkDropList
         [cdkDropListData]="view.cards_backlog"
@@ -14,6 +15,7 @@
 
     <!--Column TO DO-->
     <app-board-column-tasks
+        id="d-1"
         [name]="columnName.TO_DO"
         cdkDropList
         [cdkDropListData]="view.cards_todo"
@@ -25,6 +27,7 @@
 
     <!--Column IN PROGRESS-->
     <app-board-column-tasks
+        id="d-2"
         [name]="columnName.IN_PROGRESS"
         cdkDropList
         [cdkDropListData]="view.cards_inprogress"
@@ -36,6 +39,7 @@
 
     <!--Column done-->
     <app-board-column-tasks
+        id="d-3"
         [name]="columnName.DONE"
         cdkDropList
         [cdkDropListData]="view.cards_done"
