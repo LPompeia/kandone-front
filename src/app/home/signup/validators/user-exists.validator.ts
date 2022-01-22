@@ -9,14 +9,28 @@ import { SignupService } from '../signup.service';
 export class UserExistsService {
   constructor(private signUpService: SignupService) {}
 
-  userExists() {
+  userExistsByUsername() {
     return (control: AbstractControl) => {
       return control.valueChanges.pipe(
         switchMap((nomeUsuario) =>
-          this.signUpService.checkUserExists(nomeUsuario)
+          this.signUpService.checkUserExistsByUsername(nomeUsuario)
         ),
         map((userExists) =>
           userExists ? { userExists: true } : null
+        ),
+        first()
+      );
+    };
+  }
+
+  userExistsByEmail() {
+    return (control: AbstractControl) => {
+      return control.valueChanges.pipe(
+        switchMap((emailUsuario) =>
+          this.signUpService.checkUserExistsByEmail(emailUsuario)
+        ),
+        map((userExists) =>
+          userExists ? { userExistsByEmail: true } : null
         ),
         first()
       );

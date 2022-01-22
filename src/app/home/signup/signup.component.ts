@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { NewUser } from './new-user';
 import { SignupService } from './signup.service';
 import { lowerValidator } from './validators/lower.validator';
+import { spaceBetweenValidator } from './validators/space-between.validator';
+import { userPasswordEqualValidator } from './validators/user-and-password-equal.validator';
 import { UserExistsService } from './validators/user-exists.validator';
 
 @Component({
@@ -23,14 +25,17 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.newUsuarioForm = this.formBuilder.group(
       {
-        email: ['', [Validators.required, Validators.email]],
+        email: ['', [Validators.required, Validators.email], this.userExistsService.userExistsByEmail()],
         name: ['', [Validators.required, Validators.minLength(4)]],
         username: [
           '',
-          [lowerValidator, Validators.required],
-          [this.userExistsService.userExists()],
+          [lowerValidator, spaceBetweenValidator, Validators.required],
+          [this.userExistsService.userExistsByUsername()],
         ],
         password: ['', [Validators.required, Validators.minLength(6)]],
+      },
+      {
+        validators: [userPasswordEqualValidator],
       }
     )
   }

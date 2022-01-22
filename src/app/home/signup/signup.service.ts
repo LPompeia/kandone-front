@@ -16,7 +16,11 @@ export class SignupService {
     return this.http.post(`${API}/user/signup`, newUser);
   }
 
-  checkUserExists(username: string) {
+  checkUserExistsByUsername(username: string) {
     return this.http.get(`${API}/user/exists/${username}`);
+  }
+
+  checkUserExistsByEmail(email: string) {
+    return this.http.get(`${API}/user/check/${email}`);
   }
 }
