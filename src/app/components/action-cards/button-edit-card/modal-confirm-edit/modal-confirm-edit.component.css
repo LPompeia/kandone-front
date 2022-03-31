@@ -1,0 +1,26 @@
+.modal-close {
+  border: none;
+  position: relative;
+  float: right;
+  margin: -10px;
+}
+
+.icon-edit-card {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.paragraphy-header {
+  margin: 0px -1px
+}
+
+.main-button {
+  text-align: right;
+  margin: 30px;
+  margin-top: 15px;
+}
+
+.button-confirm {
+  border: none;
+  border-radius: 0.2rem;
+}

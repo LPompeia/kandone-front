@@ -1,0 +1,12 @@
+.edit-button {
+  float: right;
+  border: 0;
+  height: 25px;
+  background: white;
+  margin: -39px 0px 0px 0px
+}
+
+.edit-button:hover{
+  background: #f0efef;
+}
+

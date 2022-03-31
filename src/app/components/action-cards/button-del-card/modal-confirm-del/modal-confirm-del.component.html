@@ -1,0 +1,32 @@
+<div *ngIf="this.cardDeleted$ | async as card">
+  <button
+    class="modal-close"
+    (click)="closeModal()">
+    <i class='fa fa-remove'></i>
+  </button>
+
+  <i class="fa fa-remove"></i> <span class="ml-2 icon-del-card">Delete card #{{this.card.id}}</span>
+
+  <p class="paragraphy-header"
+      mat-dialog-content>
+      on {{ this.card.description }}
+  </p>
+
+  <input
+    class="form-control mt-2 ml-3 col-sm-10"
+    type="text"
+    placeholder="Add description your activity ..."
+    name="description"
+    readonly
+    [value]="this.card.description"
+  >
+
+  <div class="col-lg-10" class="main-button">
+    <button
+      class="btn btn-secondary button-confirm"
+      mat-button
+      (click)="this.deleteCard()"
+      >Delete
+    </button>
+  </div>
+</div>

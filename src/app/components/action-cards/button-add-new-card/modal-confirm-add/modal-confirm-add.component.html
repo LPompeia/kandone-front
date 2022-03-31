@@ -1,0 +1,33 @@
+<button
+  class="modal-close"
+  (click)="closeModal()">
+  <i class='fa fa-remove'></i>
+</button>
+
+<i class="fa fa-plus"></i> <span class="ml-2 icon-add-card">Add card details</span>
+
+<p class="paragraphy-header"
+    mat-dialog-content>
+    on {{data.header | titlecase}}
+</p>
+
+<form [formGroup]="newCardForm" (submit)="saveCard()">
+  <input
+    class="form-control mt-2 ml-3 col-sm-10"
+    type="text"
+    placeholder="Add description your activity ..."
+    name="description"
+    formControlName="description"
+    required
+  >
+
+  <div class="col-lg-10" class="main-button">
+    <button
+      class="btn btn-secondary button-confirm"
+      type="submit"
+      mat-button
+      [disabled]="!newCardForm.valid"
+      >Confirm
+    </button>
+  </div>
+</form>

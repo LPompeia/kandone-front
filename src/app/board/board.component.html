@@ -1,6 +1,7 @@
 <div *ngIf="boardView$ | async as view" >
   <p class="mb-1 pl-3 board-name"> {{view.board.name}} </p>
   <div class="d-flex flex-row" cdkDropListGroup>
+
     <!--Column BACKLOG-->
     <app-board-column-tasks
         id="d-0"
@@ -8,9 +9,28 @@
         cdkDropList
         [cdkDropListData]="view.cards_backlog"
         (cdkDropListDropped)="drop($event)">
+
       <div class="card mb-1 cursor-grab" *ngFor="let card of view.cards_backlog" cdkDrag>
-        <app-card-task [description]="card.description"></app-card-task>
+        <app-card-task [description]="card.description">
+
+          <app-button-del-card
+            (boardViewAfterAdd$)="receveidBoardChild($event)"
+            [cardId]="card.id">
+          </app-button-del-card>
+
+          <app-button-edit-card
+            (boardViewAfterAdd$)="receveidBoardChild($event)"
+            [cardId]="card.id">
+          </app-button-edit-card>
+        </app-card-task>
       </div>
+
+      <button-add-new-card
+        (boardViewAfterAdd$)="receveidBoardChild($event)"
+        [boardId]="view.board.id"
+        [column]="columnName.BACKLOG">
+      </button-add-new-card>
+
     </app-board-column-tasks>
 
     <!--Column TO DO-->
@@ -20,9 +40,28 @@
         cdkDropList
         [cdkDropListData]="view.cards_todo"
         (cdkDropListDropped)="drop($event)">
+
       <div class="card mb-1 cursor-grab" *ngFor="let card of view.cards_todo" cdkDrag>
-        <app-card-task [description]="card.description"></app-card-task>
+        <app-card-task [description]="card.description">
+
+          <app-button-del-card
+            (boardViewAfterAdd$)="receveidBoardChild($event)"
+            [cardId]="card.id">
+          </app-button-del-card>
+
+          <app-button-edit-card
+            (boardViewAfterAdd$)="receveidBoardChild($event)"
+            [cardId]="card.id">
+          </app-button-edit-card>
+        </app-card-task>
       </div>
+
+      <button-add-new-card
+        (boardViewAfterAdd$)="receveidBoardChild($event)"
+        [boardId]="view.board.id"
+        [column]="columnName.TO_DO">
+      </button-add-new-card>
+
     </app-board-column-tasks>
 
     <!--Column IN PROGRESS-->
@@ -32,9 +71,28 @@
         cdkDropList
         [cdkDropListData]="view.cards_inprogress"
         (cdkDropListDropped)="drop($event)">
+
       <div class="card mb-1 cursor-grab" *ngFor="let card of view.cards_inprogress" cdkDrag>
-        <app-card-task [description]="card.description"></app-card-task>
+        <app-card-task [description]="card.description">
+
+          <app-button-del-card
+            (boardViewAfterAdd$)="receveidBoardChild($event)"
+            [cardId]="card.id">
+          </app-button-del-card>
+
+          <app-button-edit-card
+            (boardViewAfterAdd$)="receveidBoardChild($event)"
+            [cardId]="card.id">
+          </app-button-edit-card>
+        </app-card-task>
       </div>
+
+      <button-add-new-card
+        (boardViewAfterAdd$)="receveidBoardChild($event)"
+        [boardId]="view.board.id"
+        [column]="columnName.IN_PROGRESS">
+      </button-add-new-card>
+
     </app-board-column-tasks>
 
     <!--Column done-->
@@ -44,9 +102,28 @@
         cdkDropList
         [cdkDropListData]="view.cards_done"
         (cdkDropListDropped)="drop($event)">
+
       <div class="card mb-1 cursor-grab" *ngFor="let card of view.cards_done" cdkDrag>
-        <app-card-task [description]="card.description"></app-card-task>
+        <app-card-task [description]="card.description">
+
+          <app-button-del-card
+            (boardViewAfterAdd$)="receveidBoardChild($event)"
+            [cardId]="card.id">
+          </app-button-del-card>
+
+          <app-button-edit-card
+            (boardViewAfterAdd$)="receveidBoardChild($event)"
+            [cardId]="card.id">
+          </app-button-edit-card>
+        </app-card-task>
       </div>
+
+      <button-add-new-card
+        (boardViewAfterAdd$)="receveidBoardChild($event)"
+        [boardId]="view.board.id"
+        [column]="columnName.DONE">
+      </button-add-new-card>
+
     </app-board-column-tasks>
   </div>
 </div>

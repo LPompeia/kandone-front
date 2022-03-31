@@ -15,18 +15,17 @@ import { CardStatusDragDraw } from './card-task/card.model';
 })
 export class BoardComponent implements OnInit {
 
+  testa : string = ''
+
   boardView$!: Observable<Board>;
   public columnName = ColumnNameBoard;
 
   constructor(
     private cardService: CardTaskService,
-    private boardService: BoardService,
-    private userService: UserService) { }
+    private boardService: BoardService) { }
 
   ngOnInit(): void {
-    this.boardView$ = this.userService
-      .returnUser()
-      .pipe(switchMap((user) => this.boardService.getBoard(user.sub!)))
+    this.boardView$ = this.boardService.returnCurrentBoardWithUser();
   }
 
   drop(event: CdkDragDrop<any>) {
@@ -47,6 +46,10 @@ export class BoardComponent implements OnInit {
         console.error(error)
       })
     }
+  }
+
+  receveidBoardChild(boardChild:Observable<Board>) {
+    this.boardView$ = boardChild
   }
 
 }
