@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Board } from 'src/app/board/board.interface';
 import { BoardService } from 'src/app/board/board.service';
 import { CardTaskService } from 'src/app/board/card-task/card-task.service';
+import { delButton } from './delButton.interface';
 import { ModalConfirmDelComponent } from './modal-confirm-del/modal-confirm-del.component';
 
 @Component({
@@ -16,7 +17,7 @@ export class ButtonDelCardComponent implements OnInit {
   @Output() boardViewAfterAdd$ = new EventEmitter<Observable<Board>>();
 
   @Input() cardId! : number
-  cardDeleted! : Observable<any>;
+  cardDeleted! : Observable<delButton>;
 
   constructor(
     public boardService: BoardService,

@@ -12,7 +12,7 @@ import { editCard } from '../editCard.interface';
 })
 export class ModalConfirmEditComponent implements OnInit {
 
-  cardEditedPreview$ : Observable<any> = this.data.cardEdited;
+  cardEditedPreview$ : Observable<editCard> = this.data.cardEdited;
 
   editCardForm!: FormGroup;
 
@@ -47,14 +47,14 @@ export class ModalConfirmEditComponent implements OnInit {
   editCard() {
     this.editCardSended.description = this.editCardForm.get('description')!.value
 
-    const obj = {
+    const cardUpdated = {
       id: this.editCardSended.id,
       description: this.editCardSended.description,
       status: this.editCardSended.status,
       board: { id: this.editCardSended.board.id }
     }
 
-    this.cardTaskService.updateCard(this.data.idCard, obj).subscribe(() => {
+    this.cardTaskService.updateCard(this.data.idCard, cardUpdated).subscribe(() => {
       this.closeModal();
     }, () => {
       alert('Card not edited because failed server');

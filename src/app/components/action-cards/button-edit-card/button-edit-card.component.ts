@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Board } from 'src/app/board/board.interface';
 import { BoardService } from 'src/app/board/board.service';
 import { CardTaskService } from 'src/app/board/card-task/card-task.service';
+import { editCard } from './editCard.interface';
 import { ModalConfirmEditComponent } from './modal-confirm-edit/modal-confirm-edit.component';
 
 @Component({
@@ -17,7 +18,7 @@ export class ButtonEditCardComponent implements OnInit {
 
   @Output() boardViewAfterAdd$ = new EventEmitter<Observable<Board>>();
 
-  cardEdited! : Observable<any>;
+  cardEdited! : Observable<editCard>;
 
   constructor(
     public boardService: BoardService,

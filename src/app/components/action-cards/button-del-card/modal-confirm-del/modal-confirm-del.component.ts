@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { CardTaskService } from 'src/app/board/card-task/card-task.service';
+import { delButton } from '../delButton.interface';
 
 @Component({
   selector: 'app-modal-confirm-del',
@@ -10,12 +11,12 @@ import { CardTaskService } from 'src/app/board/card-task/card-task.service';
 })
 export class ModalConfirmDelComponent implements OnInit {
 
-  cardDeleted$ : Observable<any> = this.data.cardDeleted;
+  cardDeleted$ : Observable<delButton> = this.data.cardDeleted;
 
   constructor(
     public cardTaskService : CardTaskService,
     public dialogRef: MatDialogRef<ModalConfirmDelComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {cardDeleted: Observable<any>, idCard: number }
+    @Inject(MAT_DIALOG_DATA) public data: {cardDeleted: Observable<delButton>, idCard: number }
   ) { }
 
   ngOnInit(): void {
