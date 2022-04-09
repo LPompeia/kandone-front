@@ -3,8 +3,6 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import { BoardService } from './board.service';
 import { Board } from './board.interface';
 import { Observable } from 'rxjs';
-import { UserService } from '../authentication/user/user.service';
-import { switchMap } from 'rxjs/operators';
 import { CardTaskService } from './card-task/card-task.service';
 import { CardStatusDragDraw } from './card-task/card.model';
 
