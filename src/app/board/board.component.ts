@@ -55,8 +55,8 @@ export class BoardComponent implements OnInit {
 }
 
 enum ColumnNameBoard {
-    BACKLOG = 'backlog',
-    TO_DO = 'to do',
-    IN_PROGRESS = 'in progress',
-    DONE = 'done'
+    BACKLOG = 'BACKLOG',
+    TO_DO = 'TO DO',
+    IN_PROGRESS = 'IN PROGRESS',
+    DONE = 'DONE'
 }

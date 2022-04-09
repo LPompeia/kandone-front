@@ -32,7 +32,7 @@ export class ModalConfirmEditComponent implements OnInit {
     this.cardEditedPreview$.subscribe((cardLoaded : any) => {
 
       this.editCardSended = cardLoaded;
-      this.editCardSended.status = this.convertColumnNameForValue(cardLoaded.statusCard);
+      this.editCardSended.status = cardLoaded.statusCard;
 
       this.editCardForm = this.formBuilder.group({
         description: [this.editCardSended.description, [Validators.required]],
@@ -60,20 +60,4 @@ export class ModalConfirmEditComponent implements OnInit {
       alert('Card not edited because failed server');
     })
   }
-
-  private convertColumnNameForValue(column : string) : number {
-    switch(column) {
-      case 'BACKLOG':
-        return 0
-      case 'TO_DO':
-        return 1
-      case 'IN_PROGRESS':
-        return 2
-      case 'DONE':
-        return 3
-      default:
-        return -1
-    }
-  }
-
 }

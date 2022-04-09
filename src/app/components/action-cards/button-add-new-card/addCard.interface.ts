@@ -1,6 +1,6 @@
 export interface addCard {
   description : string
-  status : number
+  status : string
   board : Board;
 }
 

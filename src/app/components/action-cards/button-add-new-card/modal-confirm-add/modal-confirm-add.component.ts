@@ -32,7 +32,7 @@ export class ModalConfirmAddComponent implements OnInit {
   saveCard() {
     if (this.newCardForm.valid) {
       const newCard = this.newCardForm.getRawValue() as addCard;
-      newCard.status = this.convertColumnNameForValue(this.data.header);
+      newCard.status = this.data.header.replace(" ", "_");
       newCard.board = {id: this.data.boardId}
 
       this.cardTaskService.addCard(newCard).subscribe(() => {
@@ -42,20 +42,4 @@ export class ModalConfirmAddComponent implements OnInit {
       })
     }
   }
-
-  private convertColumnNameForValue(column : string) : number {
-    switch(column) {
-      case 'backlog':
-        return 0
-      case 'to do':
-        return 1
-      case 'in progress':
-        return 2
-      case 'done':
-        return 3
-      default:
-        return -1
-    }
-  }
-
 }
