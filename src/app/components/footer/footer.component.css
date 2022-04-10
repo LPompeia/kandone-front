@@ -1,6 +1,7 @@
 .footer-full {
   clear: both;
     position: fixed;
+    display: grid;
     bottom: 0;
     width: 100%
 }
