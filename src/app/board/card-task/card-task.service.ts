@@ -4,9 +4,10 @@ import { Observable } from "rxjs";
 import { addCard } from "src/app/components/action-cards/button-add-new-card/addCard.interface";
 import { delButton } from "src/app/components/action-cards/button-del-card/delButton.interface";
 import { editCard } from "src/app/components/action-cards/button-edit-card/editCard.interface";
+import { environment } from "src/environments/environment";
 import { CardStatusDragDraw } from "./card.model";
 
-const API = 'http://localhost:8080'
+const API = environment.apiUrl
 
 @Injectable({
   providedIn: 'root'
